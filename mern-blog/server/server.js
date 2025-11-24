@@ -12,8 +12,10 @@ app.use(express.json({ limit: '30mb', extended: true }));
 app.use(express.urlencoded({ limit: '30mb', extended: true }));
 
 // Allow frontend in DEV only
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+
 app.use(cors({
-  origin: ['http://localhost:3000'],
+  origin: FRONTEND_URL,
   credentials: true
 }));
 
